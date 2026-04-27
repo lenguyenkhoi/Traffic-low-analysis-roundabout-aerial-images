@@ -10,11 +10,11 @@ from ultralytics import YOLO
 
 st.set_page_config(
     page_title="Đánh giá hiệu năng thực tế", 
-    page_icon="📋", 
+    page_icon="📈", 
     layout="wide"
 )
 
-st.title("📋Đánh giá hiệu năng thực tế")
+st.title("📈Đánh giá hiệu năng thực tế")
 st.markdown("---")
 
 st.markdown("""
