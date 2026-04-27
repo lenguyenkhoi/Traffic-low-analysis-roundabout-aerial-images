@@ -1,0 +1,16 @@
+Ground Truth:
+    Total: 19
+    car: 17, cycle: 2
+
+    Prediction:
+    Total: 19
+    car: 17, cycle: 2
+    
+    Error Analysis:
+    TP: 19
+    FP: 0
+    FN: 0
+    Localization errors: 0
+    Classification errors: 0
+    Duplicate detections: 0
+    

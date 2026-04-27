@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+
+# dataset 
+data/
+output/yolo_split
+
+# Bỏ qua thư mục runs chứa logs/ảnh dự đoán mặc định của Ultralytics (nếu không cần thiết)
+YOLOv11_training/yolo11*.pt
+YOLOv11_training/runs/
+YOLOv11_training/training_backup_YOLOv11*/*
+!YOLOv11_training/training_backup_YOLOv11*/weights/
+YOLOv11_training/training_backup_YOLOv11*/weights/*
+!YOLOv11_training/training_backup_YOLOv11*/weights/best.pt
+YOLOv11_training/model_tuning/*
+!YOLOv11_training/model_tuning/weights/
+YOLOv11_training/model_tuning/weights/*
+!YOLOv11_training/model_tuning/weights/best.pt
