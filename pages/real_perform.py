@@ -14,7 +14,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("Đánh giá hiệu năng thực tế")
+st.title("📋Đánh giá hiệu năng thực tế")
 st.markdown("---")
 
 st.markdown("""

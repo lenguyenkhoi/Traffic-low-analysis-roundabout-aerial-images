@@ -31,7 +31,7 @@ st.sidebar.page_link("pages/ea.py",label= "📋Tổng kết và Phân tích lỗ
 st.sidebar.page_link("pages/demo_ea.py", label="🧪Demo Error Analysis")
 st.sidebar.page_link("pages/predict.py", label="🔍 Dự đoán")
 
-st.title("⚙️Demo Error Analysis")
+st.title("🧪Demo Error Analysis")
 st.write("Phần demo này sẽ trả ra kết quả dự đoán và các lỗi phân tích")
 col1, col2, col3 = st.columns(3)
 with col1:

@@ -10,7 +10,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("Phát hiện vật thể trong vòng xuyến")
+st.title("🔍Phát hiện vật thể trong vòng xuyến")
 st.markdown("---")
 
 st.markdown("""

@@ -31,7 +31,7 @@ st.sidebar.page_link("pages/ea.py",label= "📋Tổng kết và Phân tích lỗ
 st.sidebar.page_link("pages/demo_ea.py", label="🧪Demo Error Analysis")
 st.sidebar.page_link("pages/predict.py", label="🔍 Dự đoán")
 
-st.title("Tổng kết và Phân tích Hạn chế (Error Analysis)")
+st.title("📋Tổng kết và Phân tích Hạn chế (Error Analysis)")
 # EA
 st.header("Error Analysis (Phân tích lỗi)")
 st.image("result/images/demo_ea.png", caption="Minh họa các lỗi")

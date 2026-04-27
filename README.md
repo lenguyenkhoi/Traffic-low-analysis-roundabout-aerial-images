@@ -1,42 +1,16 @@
 # 🚦Traffic Flow Analysis at Roundabout Using Aerial Images
 
-A computer vision project for **vehicle detection, traffic flow analysis, and error analysis** at roundabouts using **YOLOv11** and **Streamlit**.
+![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
+![YOLOv11](https://img.shields.io/badge/Ultralytics-YOLOv11-yellow)
+![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B.svg)
+![Optuna](https://img.shields.io/badge/Optuna-Tuning-blueviolet)
 
-This system uses aerial images captured from above to detect vehicles such as:
+## 📌 Project Overview
+This project focuses on building an end-to-end computer vision pipeline to detect and analyze traffic flow at roundabouts using aerial imagery. By leveraging **YOLOv11** and hyperparameter tuning via **Optuna**, the system successfully addresses challenges such as severe class imbalance (e.g., abundant cars vs. rare vans) and high-density vehicle overlapping at the edges of the camera frame.
 
-* Car
-* Cycle
-* Bus
-* Truck
-* Van
+The final model and insights are deployed as an interactive web dashboard using **Streamlit**, allowing users to explore the data, evaluate model performance, and test predictions.
 
-It also provides an interactive web app for prediction, visualization, and model evaluation.
-
----
-
-## 📌 Project Highlights
-
-✅ Vehicle detection from aerial images
-✅ Traffic density analysis
-✅ Multi-model comparison (YOLOv11n / s / m / optimized model)
-✅ Error Analysis (TP / FP / FN / Localization / Classification / Duplicate)
-✅ Interactive Streamlit dashboard
-✅ Visualization with charts and bounding boxes
-
----
-
-## 🧠 Technologies Used
-
-* Python
-* YOLOv11 (Ultralytics)
-* Streamlit
-* OpenCV
-* NumPy
-* Plotly
-* Pandas
-* Matplotlib
-
----
+🔗 **Live Dashboard:** [Traffic Flow Analysis App](https://traffic-low-analysis-roundabout-aerial-images.streamlit.app/)
 
 ## 📂 Project Structure
 
@@ -56,6 +30,8 @@ CAPSTONE_FINAL/
 │   ├── eda.py
 │   ├── model.py
 │   ├── model_evaluation.py
+│   ├── ea.py
+│   ├── real_perform
 │   ├── demo_ea.py
 │   └── predict.py
 │
@@ -71,7 +47,7 @@ CAPSTONE_FINAL/
 │── result_vis/
 │
 │── YOLOv11_training/ 
-│   ├── final_model/ 
+│   ├── model_tuning/ 
 │   │     └── weights/ 
 │   │         └── best.pt 
 │   │ 
@@ -87,7 +63,7 @@ CAPSTONE_FINAL/
 │         └── weights/ 
 │             └── best.pt
 ```
----
+
 ## 📦 Dataset
 
 The dataset used in this project is available on Google Drive:
@@ -107,88 +83,54 @@ Classes:
 * Bus
 * Truck
 * Van
----
 
-## 🚀 Features
 
-### 1️⃣ Exploratory Data Analysis (EDA)
+## ✨ Key Features
+- **Exploratory Data Analysis (EDA):** Interactive heatmaps and spatial distribution analysis revealing traffic density patterns.
+- **Model Training & Hyperparameter Tuning:** Comparison between YOLOv11 architectures (Nano, Small, Medium) and the application of Optuna to optimize the `YOLOv11s` model, boosting minority class recognition.
+- **Robust Evaluation:** Comprehensive test set evaluation including Confusion Matrix, Precision-Recall curves, and spatial IoU analysis (verifying Bounding Box accuracy at dense frame edges).
+- **Interactive Error Analysis:** A dedicated module to investigate False Positives and Classification errors, demonstrating critical thinking and model interpretability.
+- **Dark Mode UI:** A professional, sleek interface designed for optimal data visualization.
 
-* Class distribution
-* Sample images
-* Vehicle statistics
-* Dataset insights
+## 📊 Model Performance
+The final deployed model is **YOLOv11s-optuna**, which strikes the perfect balance between inference speed and accuracy. 
 
-### 2️⃣ Model Training & Evaluation
+**Test Set Results:**
+- **Overall mAP@0.5:** `0.940`
+- **mAP@0.5-0.95:** `0.736`
+- **Localization (IoU):** Maintained `> 0.90` average IoU even in highly dense traffic areas (left edge of the frame, $x < 0.3$).
+- **Minority Classes:** Significant improvement in `van` and `cycle` detection post-tuning without sacrificing the performance on majority classes like `car`.
 
-* YOLOv11 Nano / Small / Medium
-* Precision / Recall / mAP
-* Loss curves
-* Confusion Matrix
+## 🛠️ Tech Stack
+- **Computer Vision:** Ultralytics YOLOv11, OpenCV
+- **Optimization:** Optuna
+- **Data Manipulation & Visualization:** Pandas, Matplotlib, Seaborn
+- **Web App Framework:** Streamlit
+- **Environment:** NVIDIA CUDA, PyTorch
 
-### 3️⃣ Prediction
+## 🚀 Local Installation & Setup
 
-Upload an image and run vehicle detection instantly.
+To run this Streamlit app locally, follow these steps:
 
-### 4️⃣ Error Analysis
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/your-username/traffic-flow-analysis-yolo.git](https://github.com/your-username/traffic-flow-analysis-yolo.git)
+   cd traffic-flow-analysis-yolo
+   ```
+2. **Create a virtual environment (optional but recommended):**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows use: venv\Scripts\activate
+   ```
+3. **Install the dependencies:**
 
-Compare:
-
-* Ground Truth
-* Prediction
-* Error Visualization
-
-Includes:
-
-* True Positive
-* False Positive
-* False Negative
-* Localization Error
-* Classification Error
-* Duplicate Detection
-
-Visualize and diagnose model mistakes:
-
-| Type                    | Meaning                            |
-| ----------------------- | ---------------------------------- |
-| 🟢 True Positive        | Correct detection                  |
-| 🔴 False Positive       | Wrong detection                    |
-| 🔵 False Negative       | Missed object                      |
-| 🟡 Localization Error   | Wrong bounding box                 |
-| 🟣 Classification Error | Wrong class                        |
-| 🟠 Duplicate            | Multiple detections for one object |
-
-👉 This is the **core strength** of the project
-
----
-
-## ⚙️ Installation
-
-```bash
-git clone https://github.com/lenguyenkhoi/Traffic-low-analysis-roundabout-aerial-images.git
-cd traffic-roundabout-analysis
-pip install -r requirements.txt
-```
-
----
-
-## ▶️ Run Streamlit App
-
-```bash
-streamlit run app.py
-```
-
----
-
-## 📈 Model Performance
-
- | Model       | Precision | Recall | mAP50 | mAP50-95 |
- |------------|----------|--------|-------|----------|
- | YOLOv11n   | 0.787    | 0.854  | 0.824 | 0.603    |
- | YOLOv11s   | 0.903    | 0.868  | 0.899 | 0.694    |
- | YOLOv11m   | 0.902    | 0.857  | 0.894 | 0.683    |
- | YOLOv11s-optuna  | 0.882 | 0.920  | 0.943 |0.711  |
-
----
+    ```bash
+    pip install -r requirements.txt
+    ```
+4. **Run the Streamlit app:**
+   ```bash
+   streamlit run app.py
+   ```
 
 ## 🎯 Future Improvements
 

@@ -12,7 +12,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("Quá trình huấn luyện và tối ưu hóa")
+st.title("⚙️Quá trình huấn luyện và tối ưu hóa")
 st.markdown("---")
 
 st.markdown("""
